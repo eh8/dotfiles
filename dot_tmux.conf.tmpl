@@ -1,0 +1,31 @@
+# Proper color support
+set -g default-terminal "xterm-256color"
+
+# Set default-command to get colors to appear properly, and invoke proper ARM shell
+# inspired by https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
+set-option -g default-command "/usr/bin/arch -arm64 /bin/zsh"
+
+# No delay when doing stuff in vim
+set -sg escape-time 0
+
+# Windows are named properly
+set-option -g set-titles on
+set-option -g set-titles-string "#W"
+set -g allow-rename on
+
+# Allow copying to the system clipboard (?)
+set -g mouse on
+set -g set-clipboard on
+
+# Always have consistent window numbers that increment from zero
+set-option -g renumber-windows on
+
+{{ if eq .chezmoi.os "darwin" }}
+
+# Load in powerline
+source /opt/homebrew/lib/python3.10/site-packages/powerline/bindings/tmux/powerline.conf
+
+{{ else if eq .chezmoi.os "linux" }}
+# linux
+{{ end }}
+

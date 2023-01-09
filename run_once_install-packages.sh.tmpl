@@ -1,0 +1,13 @@
+#!/bin/sh
+
+{{ if eq .chezmoi.os "linux" -}}
+
+yay -S tmux neovim bat zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
+
+{{ else if eq .chezmoi.os "darwin" -}}
+
+brew install tmux python neovim bat zsh-autosuggestions zsh-syntax-highlighting romkatv/powerlevel10k/powerlevel10k
+pip install powerline-status
+pip install psutil
+
+{{ end -}}
