@@ -12,7 +12,7 @@ if [ "$(uname)" == "Darwin" ]; then
 
   # Install Homebrew
   command -v brew >/dev/null 2>&1 || \
-    (echo '🍺  Installing Homebrew' && NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/$USER/.zprofile)
+    (echo '🍺  Installing Homebrew' && NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/$USER/.zprofile && /opt/homebrew/bin/brew shellenv)
 
   # Install chezmoi
   command -v chezmoi >/dev/null 2>&1 || \

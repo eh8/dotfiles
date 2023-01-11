@@ -14,6 +14,7 @@ fi
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -23,9 +24,10 @@ if type brew &>/dev/null; then
 fi
 
 {{ else if eq .chezmoi.os "linux" }}
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+export FZF_BASE=/usr/bin/fzf
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 
 # Tmux window titles
@@ -41,7 +43,6 @@ esac
 {{ end }}
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd'
 export FZF_CTRL_T_OPTS="--preview '(bat --style=plain --theme=base16 --color=always {} || tree -C {}) 2> /dev/null | head -200' --select-1 --exit-0"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
