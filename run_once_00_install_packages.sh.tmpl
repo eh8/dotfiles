@@ -3,7 +3,7 @@
 {{ if eq .chezmoi.os "linux" }}
 yay -S --noconfirm bat fzf neovim tmux zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
 
-{{ if .personal_device }}
+{{ if not .server }}
     yay -S alacritty
 {{ end }}
 
@@ -57,7 +57,7 @@ casks=(
     dropbox
     figma
     firefox
-    font-iosevka-ss08
+    homebrew/cask-fonts/font-iosevka-ss08
     google-chrome
     handbrake
     maccy
@@ -80,4 +80,7 @@ brew cleanup
 
 sudo brew services start sudo-touchid
 sudo-touchid
+
+pip3 install powerline-status
+pip3 install psutil
 {{ end }}

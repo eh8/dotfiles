@@ -12,7 +12,7 @@ if [ "$(uname)" == "Darwin" ]; then
 
   # Install Homebrew
   command -v brew >/dev/null 2>&1 || \
-    (echo '🍺  Installing Homebrew' && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+    (echo '🍺  Installing Homebrew' && NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> /Users/$USER/.zprofile)
 
   # Install chezmoi
   command -v chezmoi >/dev/null 2>&1 || \
@@ -31,6 +31,9 @@ if [ "$(uname)" == "Darwin" ]; then
   echo ""
   echo "✅  Done."
 elif [ "$(uname)" == "Linux" ]; then
+  echo "🐧  Linux detected"
+  echo ""
+
   # Install yay
   command -v yay >/dev/null 2>&1 || \
     (echo '📦  Installing Yay' && sudo pacman -S --needed --noconfirm git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si yay-bin)
@@ -52,4 +55,3 @@ elif [ "$(uname)" == "Linux" ]; then
   echo ""
   echo "✅  Done."
 fi
-
