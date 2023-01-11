@@ -78,8 +78,10 @@ brew install --cask ${casks[@]}
 
 brew cleanup
 
-sudo brew services start sudo-touchid
-sudo-touchid
+if ! brew services | grep -q sudo-touchid ; then
+    sudo brew services start sudo-touchid
+    sudo-touchid
+fi
 
 pip3 install powerline-status
 pip3 install psutil
