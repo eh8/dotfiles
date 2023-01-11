@@ -1,0 +1,83 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "linux" }}
+yay -S --noconfirm bat fzf neovim tmux zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
+
+{{ if .personal_device }}
+    yay -S alacritty
+{{ end }}
+
+{{ else if eq .chezmoi.os "darwin" }}
+set -eufo pipefail
+
+formulae=(
+    ansible
+    asciiquarium
+    bat
+    btop
+    chezmoi
+    cmatrix
+    croc
+    duf
+    exa
+    fd
+    ffmpeg
+    fortune
+    fzf
+    gdu
+    genact
+    git-delta
+    gnupg
+    go
+    imagemagick
+    kopia
+    neofetch
+    neovim
+    pam-reattach
+    pandoc
+    pinentry-mac
+    python@3.10
+    tealdeer
+    tmux
+    trash-cli
+    tree
+    wget
+    yt-dlp
+    zola
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    artginzburg/tap/sudo-touchid
+    romkatv/powerlevel10k/powerlevel10k
+)
+casks=(
+    1password
+    alacritty
+    caffeine
+    discord
+    dropbox
+    figma
+    firefox
+    font-iosevka-ss08
+    google-chrome
+    handbrake
+    maccy
+    mpv
+    mullvadvpn
+    obsidian
+    omnidisksweeper
+    spotify
+    visual-studio-code
+    vmware-horizon-client
+    zoom
+)
+
+brew update
+
+brew install ${formulae[@]}
+brew install --cask ${casks[@]}
+
+brew cleanup
+
+sudo brew services start sudo-touchid
+sudo-touchid
+{{ end }}

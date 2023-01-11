@@ -1,0 +1,8 @@
+README.md
+LICENSE
+install.sh
+
+{{ if .server }}
+dot_alacritty.yml.tmpl
+dot_gitconfig.tmpl
+{{ end }}

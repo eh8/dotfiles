@@ -11,7 +11,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 {{ if eq .chezmoi.os "darwin" }}
-
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -24,7 +23,6 @@ if type brew &>/dev/null; then
 fi
 
 {{ else if eq .chezmoi.os "linux" }}
-
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -40,7 +38,6 @@ screen*)
   ;;
 *) ;;
 esac
-
 {{ end }}
 
 # fzf
@@ -62,7 +59,6 @@ alias v='nvim '
 alias sudo='sudo '
 
 {{ if eq .chezmoi.os "darwin" }}
-
 alias bcubc='brew upgrade --cask && brew cleanup'
 alias bcubo='brew update && brew outdated --cask'
 alias brewp='brew pin'
@@ -71,7 +67,6 @@ alias bubc='brew upgrade && brew cleanup'
 alias bubo='brew update && brew outdated'
 alias bubu='bubo && bubc'
 alias buf='brew upgrade --formula'
-
 {{ end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

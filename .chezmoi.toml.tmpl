@@ -1,0 +1,15 @@
+{{/* boolean feature tags */}}
+{{- $personal_device := false -}}{{/* true if this machine should have personal setup */}}
+{{- $server := false -}}{{/* true if this machine should have server setup */}}
+{{- "" -}}
+
+{{- $personal_device = promptBool "personal_device" -}}
+{{- $server = promptBool "server" -}}
+{{- $name := promptStringOnce . "name" "Name" -}}
+{{- $email := promptStringOnce . "email" "Email address" -}}
+
+[data]
+  personal_device = {{ $personal_device }}
+  server = {{ $server }}
+  email = {{ $email | quote }}
+  name = {{ $name | quote }}

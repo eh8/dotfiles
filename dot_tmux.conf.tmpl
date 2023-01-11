@@ -21,11 +21,8 @@ set -g set-clipboard on
 set-option -g renumber-windows on
 
 {{ if eq .chezmoi.os "darwin" }}
-
-# Load in powerline
 source /opt/homebrew/lib/python3.10/site-packages/powerline/bindings/tmux/powerline.conf
-
 {{ else if eq .chezmoi.os "linux" }}
-# linux
+source /usr/share/powerline/bindings/tmux/powerline.conf
 {{ end }}
 
