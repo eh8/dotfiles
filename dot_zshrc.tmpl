@@ -24,9 +24,24 @@ if type brew &>/dev/null; then
 fi
 
 {{ else if eq .chezmoi.os "linux" }}
-# linux
-{{ end }}
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+fpath=(/usr/share/zsh/site-functions/ $fpath)
+
+# Tmux window titles
+case "$TERM" in
+linux | xterm* | rxvt*)
+  export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}: ${PWD##*/}\007"'
+  ;;
+screen*)
+  export PROMPT_COMMAND='echo -ne "\033k${HOSTNAME%%.*}: ${PWD##*/}\033\\" '
+  ;;
+*) ;;
+esac
+
+{{ end }}
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -41,7 +56,10 @@ fortune
 alias bat='bat --theme=base16 '
 alias cat='bat --style=plain --theme=base16 --paging=never'
 alias ls='exa '
+alias e='exa '
 alias vim='nvim '
+alias v='nvim '
+alias sudo='sudo '
 
 {{ if eq .chezmoi.os "darwin" }}
 
@@ -54,8 +72,6 @@ alias bubo='brew update && brew outdated'
 alias bubu='bubo && bubc'
 alias buf='brew upgrade --formula'
 
-{{ else if eq .chezmoi.os "linux" }}
-# linux
 {{ end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
