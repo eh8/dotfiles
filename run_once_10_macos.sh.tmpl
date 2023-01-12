@@ -24,6 +24,15 @@ fi
 # Enable fzf integration with zsh
 yes | $(brew --prefix)/opt/fzf/install
 
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 # Set the icon size of Dock items to 96 pixels
 defaults write com.apple.dock tilesize -int 96; killall Dock
 
