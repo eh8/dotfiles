@@ -1,0 +1,40 @@
+{{ if eq .chezmoi.os "darwin" }}
+#!/bin/bash
+
+set -eufo pipefail
+
+echo "🔧 Configuring macOS settings"
+
+# Check if sudo-touchid already installed
+if ! brew services | grep sudo-touchid | grep -qE 'running|stopped' ; then
+    sudo brew services start sudo-touchid
+    sudo-touchid
+
+    # Add pam_reattach module to use Touch ID in tmux
+    sudo cp /etc/pam.d/sudo /etc/pam.d/sudo.bak
+    sudo chmod 644 /etc/pam.d/sudo
+    sudo chown eh8 /etc/pam.d/sudo
+    sudo sed '2 i\
+    auth       optional       /opt/homebrew/lib/pam/pam_reattach.so
+    ' /etc/pam.d/sudo.bak > /etc/pam.d/sudo
+    sudo chmod 444 /etc/pam.d/sudo
+    sudo chown root /etc/pam.d/sudo
+fi
+
+# Enable fzf integration with zsh
+yes | $(brew --prefix)/opt/fzf/install
+
+# Set the icon size of Dock items to 96 pixels
+defaults write com.apple.dock tilesize -int 96; killall Dock
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+# General / New window with Pro profile:
+defaults write com.apple.Terminal "Startup Window Settings" -string Pro
+
+# Profile: default Pro profile:
+defaults write com.apple.Terminal "Default Window Settings" -string Pro
+
+{{ end }}

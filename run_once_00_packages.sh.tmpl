@@ -1,14 +1,22 @@
+{{ if eq .chezmoi.os "linux" }}
 #!/bin/bash
 
-{{ if eq .chezmoi.os "linux" }}
-yay -S --noconfirm bat fzf neovim tmux zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
+set -eufo pipefail
+
+echo "🔨 (Re)installing required packages"
+
+yay -S --noconfirm bat fzf neovim tmux zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
 
 {{ if not .server }}
-    yay -S alacritty
+yay -S alacritty
 {{ end }}
 
 {{ else if eq .chezmoi.os "darwin" }}
+#!/bin/bash
+
 set -eufo pipefail
+
+echo "🔨 (Re)installing required packages"
 
 brew update
 
@@ -86,16 +94,7 @@ EOF
 
 brew cleanup
 
-# Check if sudo-touchid already installed
-if ! brew services | grep sudo-touchid | grep -qE 'running|stopped' ; then
-    sudo brew services start sudo-touchid
-    sudo-touchid
-fi
-
 # Install Python packages for powerline
 pip3 install powerline-status
 pip3 install psutil
-
-# Enable fzf integration with zsh
-$(brew --prefix)/opt/fzf/install
 {{ end }}
