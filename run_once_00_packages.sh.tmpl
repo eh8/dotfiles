@@ -3,7 +3,9 @@
 {{ if eq .chezmoi.os "linux" }}
 set -eufo pipefail
 
+echo ""
 echo "🔨 (Re)installing required packages"
+echo ""
 
 yay -S --noconfirm bat fzf neovim tmux zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
 
@@ -14,7 +16,9 @@ yay -S alacritty
 {{ else if eq .chezmoi.os "darwin" }}
 set -eufo pipefail
 
+echo ""
 echo "🔨 (Re)installing required packages"
+echo ""
 
 brew update
 

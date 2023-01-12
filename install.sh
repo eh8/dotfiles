@@ -36,6 +36,10 @@ if [ "$(uname)" == "Darwin" ]; then
 elif [ "$(uname)" == "Linux" ]; then
   echo "🐧  Linux detected"
   echo ""
+  
+  echo ""
+  echo "🤚  This script will setup .dotfiles for you."
+  read -n 1 -r -s -p $'    Press any key to continue or Ctrl+C to abort...\n\n'
 
   # Install yay
   command -v yay >/dev/null 2>&1 || \

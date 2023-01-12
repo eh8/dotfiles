@@ -3,7 +3,9 @@
 {{ if eq .chezmoi.os "darwin" }}
 set -eufo pipefail
 
+echo ""
 echo "🔧 Configuring macOS settings"
+echo ""
 
 # Check if sudo-touchid already installed
 if ! brew services | grep sudo-touchid | grep -qE 'running|stopped' ; then
