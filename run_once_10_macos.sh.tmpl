@@ -24,7 +24,7 @@ if ! brew services | grep sudo-touchid | grep -qE 'running|stopped' ; then
 fi
 
 # Enable fzf integration with zsh
-yes | $(brew --prefix)/opt/fzf/install
+yes | $(brew --prefix)/opt/fzf/install || true
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -36,7 +36,7 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set the icon size of Dock items to 96 pixels
-defaults write com.apple.dock tilesize -int 96; killall Dock
+defaults write com.apple.dock tilesize -int 96
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
