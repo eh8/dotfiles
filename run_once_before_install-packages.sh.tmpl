@@ -75,7 +75,6 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
     cask "spotify"
     cask "visual-studio-code"
     cask "vmware-horizon-client"
-    cask "zoom"
     mas "1Password for Safari", id: 1569813296
     mas "Infuse", id: 1136220934
     mas "Messenger", id: 1480068668
@@ -93,8 +92,10 @@ if ! brew services | grep sudo-touchid | grep -qE 'running|stopped' ; then
     sudo-touchid
 fi
 
+# Install Python packages for powerline
 pip3 install powerline-status
 pip3 install psutil
 
-yes | $(brew --prefix)/opt/fzf/install
+# Enable fzf integration with zsh
+$(brew --prefix)/opt/fzf/install
 {{ end }}
