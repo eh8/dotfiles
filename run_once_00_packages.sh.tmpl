@@ -1,6 +1,6 @@
-{{ if eq .chezmoi.os "linux" }}
 #!/bin/bash
 
+{{ if eq .chezmoi.os "linux" }}
 set -eufo pipefail
 
 echo "🔨 (Re)installing required packages"
@@ -12,8 +12,6 @@ yay -S alacritty
 {{ end }}
 
 {{ else if eq .chezmoi.os "darwin" }}
-#!/bin/bash
-
 set -eufo pipefail
 
 echo "🔨 (Re)installing required packages"

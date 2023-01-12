@@ -1,6 +1,6 @@
-{{ if eq .chezmoi.os "darwin" }}
 #!/bin/bash
 
+{{ if eq .chezmoi.os "darwin" }}
 set -eufo pipefail
 
 echo "🔧 Configuring macOS settings"
@@ -45,5 +45,4 @@ defaults write com.apple.Terminal "Startup Window Settings" -string Pro
 
 # Profile: default Pro profile:
 defaults write com.apple.Terminal "Default Window Settings" -string Pro
-
 {{ end }}
