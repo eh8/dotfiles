@@ -7,7 +7,19 @@ echo ""
 echo "🔨 (Re)installing packages"
 echo ""
 
-yay -S --noconfirm bat fzf neovim tealdeer tmux zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
+yay -S --noconfirm \
+  bat \
+  fortune-mod \
+  fzf \
+  neovim \
+  powerline \
+  tealdeer \
+  tmux \
+  zsh \
+  zsh-autosuggestions \
+  zsh-completions \
+  zsh-syntax-highlighting \
+  zsh-theme-powerlevel10k-git
 
 {{ if not .server }}
 yay -S alacritty
