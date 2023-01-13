@@ -4,7 +4,7 @@
 set -eufo pipefail
 
 echo ""
-echo "🔨 (Re)installing required packages"
+echo "🔨 (Re)installing packages"
 echo ""
 
 yay -S --noconfirm bat fzf neovim tealdeer tmux zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting zsh-theme-powerlevel10k-git
@@ -13,11 +13,14 @@ yay -S --noconfirm bat fzf neovim tealdeer tmux zsh zsh-completions zsh-autosugg
 yay -S alacritty
 {{ end }}
 
+echo ""
+echo "✅  Done."
+
 {{ else if eq .chezmoi.os "darwin" }}
 set -eufo pipefail
 
 echo ""
-echo "🔨 (Re)installing required packages"
+echo "🔨 (Re)installing packages"
 echo ""
 
 brew update
@@ -100,4 +103,7 @@ brew cleanup
 # Install Python packages for powerline
 pip3 install powerline-status
 pip3 install psutil
+
+echo ""
+echo "✅  Done."
 {{ end }}
