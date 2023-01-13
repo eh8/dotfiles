@@ -13,6 +13,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Remove command lines from the history list when the first character on the line is a space
+setopt HIST_IGNORE_SPACE
+
 # fzf
 export FZF_DEFAULT_COMMAND='fd'
 export FZF_CTRL_T_OPTS="--preview '(bat --style=plain --theme=base16 --color=always {} || tree -C {}) 2> /dev/null | head -200' --select-1 --exit-0"
