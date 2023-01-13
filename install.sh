@@ -49,11 +49,11 @@ elif [ "$(uname)" == "Linux" ]; then
 
   # Install yay
   command -v yay >/dev/null 2>&1 || \
-    (echo '📦  Installing Yay' && sudo pacman -S --needed --noconfirm git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si yay-bin)
+    (echo '📦  Installing Yay' && sudo pacman -S --needed --noconfirm git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm yay-bin)
 
   # Install chezmoi
   command -v chezmoi >/dev/null 2>&1 || \
-    (echo '👊  Installing chezmoi' && yay -S chezmoi)
+    (echo '👊  Installing chezmoi' && yay -S --noconfirm chezmoi)
 
   if ! echo $SHELL | grep -q zsh ; then
     echo "🐚  Changing default shell to zsh"
