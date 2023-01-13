@@ -8,21 +8,23 @@ echo "🔧 Configuring macOS settings"
 echo ""
 
 # Check if sudo-touchid already installed
-if ! brew services | grep sudo-touchid ; then
-    sudo brew services start sudo-touchid
-    sudo-touchid
+if ! brew services | grep sudo-touchid; then
+  sudo brew services start sudo-touchid
+  sudo-touchid
 
-    # Add pam_reattach module to use Touch ID in tmux
-    backup_ext='.bak'
-    touch_pam='auth       optional       \/opt\/homebrew\/lib\/pam\/pam_reattach.so'
-    sudo_path='/etc/pam.d/sudo'
-    nl=$'\n'
+  # Add pam_reattach module to use Touch ID in tmux
+  backup_ext='.bak'
+  touch_pam='auth       optional       \/opt\/homebrew\/lib\/pam\/pam_reattach.so'
+  sudo_path='/etc/pam.d/sudo'
+  nl=$'\n'
 
-    sudo sed -E -i "$backup_ext" "1s/^(#.*)$/\1\\${nl}$touch_pam/" "$sudo_path"
+  sudo sed -E -i "$backup_ext" "1s/^(#.*)$/\1\\${nl}$touch_pam/" "$sudo_path"
 fi
 
 # Enable fzf integration with zsh
-yes | $(brew --prefix)/opt/fzf/install || true
+if [ ! -f "/Users/$USER/.fzf.zsh" ]; then
+  yes | $(brew --prefix)/opt/fzf/install || true
+fi
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
