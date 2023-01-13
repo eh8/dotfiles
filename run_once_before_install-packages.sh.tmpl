@@ -13,6 +13,7 @@ yay -S --noconfirm bat fzf neovim tealdeer tmux zsh zsh-completions zsh-autosugg
 yay -S alacritty
 {{ end }}
 
+echo ""
 echo "✅  Done."
 
 {{ else if eq .chezmoi.os "darwin" }}
@@ -103,5 +104,6 @@ brew cleanup
 pip3 install powerline-status
 pip3 install psutil
 
+echo ""
 echo "✅  Done."
 {{ end }}
