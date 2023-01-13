@@ -3,10 +3,6 @@
 {{- "" -}}
 
 {{- $server = promptBool "server" -}}
-{{- $name := promptStringOnce . "name" "Name" -}}
-{{- $email := promptStringOnce . "email" "Email address" -}}
 
 [data]
   server = {{ $server }}
-  email = {{ $email | quote }}
-  name = {{ $name | quote }}
