@@ -3,6 +3,10 @@ LICENSE
 install.sh
 
 {{ if .server }}
-dot_alacritty.yml.tmpl
-dot_gitconfig.tmpl
+.alacritty.yml
+.gitconfig
+{{ end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+.config/yay/
 {{ end }}
