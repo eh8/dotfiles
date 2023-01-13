@@ -49,7 +49,6 @@ export TEALDEER_CONFIG_DIR=/Users/eh8/.config/tealdeer
 # Enable zsh completions
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
   autoload -Uz compinit
   compinit
 fi
