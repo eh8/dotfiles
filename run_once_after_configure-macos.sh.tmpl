@@ -8,7 +8,7 @@ echo "🔧 Configuring macOS settings"
 echo ""
 
 # Check if sudo-touchid already installed
-if ! brew services | grep sudo-touchid; then
+if ! brew services | grep -q sudo-touchid; then
   sudo brew services start sudo-touchid
   sudo-touchid
 
