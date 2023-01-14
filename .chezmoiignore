@@ -2,7 +2,7 @@ README.md
 LICENSE
 install.sh
 
-{{ if eq false .server }}
+{{ if not .server }}
 .alacritty.yml
 .gitconfig
 .ssh/config
