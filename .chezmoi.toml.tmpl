@@ -1,5 +1,6 @@
 {{- $server := false -}}
-{{- if eq trunc 3 .chezmoi.hostname "svr" -}}
+{{- $hostname_prefix := trunc 3 .chezmoi.hostname -}}
+{{- if eq $hostname_prefix "svr" -}}
 {{-   $server = true -}}
 {{- end -}}
 
