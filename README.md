@@ -8,4 +8,4 @@ To rapidly provision a macOS or Arch Linux machine:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/eh8/dotfiles/master/install.sh)"
 ```
 
-> These dotfiles contains a number of hardcoded values, including system username and email address. It also assumes you use 1Password.
+> These dotfiles contains a number of hardcoded values and critically assumes you use 1Password.

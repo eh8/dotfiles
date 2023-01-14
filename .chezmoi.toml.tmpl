@@ -1,8 +1,7 @@
-{{/* boolean feature tags */}}
-{{- $server := false -}}{{/* true if this machine should have server setup */}}
-{{- "" -}}
-
-{{- $server = promptBool "server" -}}
+{{- $server := false -}}
+{{- if eq trunc 3 .chezmoi.hostname "svr" -}}
+{{-   $server = true -}}
+{{- end -}}
 
 [data]
-  server = {{ $server }}
+  server = {{ $server | quote }}

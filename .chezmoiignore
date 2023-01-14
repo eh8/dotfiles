@@ -2,11 +2,14 @@ README.md
 LICENSE
 install.sh
 
-{{ if .server }}
-.alacritty.yml
-.gitconfig
-{{ end }}
+{{- if .server -}}
+  .alacritty.yml
+  .gitconfig
+  .ssh/config
+{{- else -}}
+  .ssh/authorized_keys
+{{- end -}}
 
-{{ if eq .chezmoi.os "darwin" }}
-.config/yay/
-{{ end }}
+{{- if eq .chezmoi.os "darwin" -}}
+  .config/yay/
+{{- end -}}
