@@ -4,12 +4,13 @@ install.sh
 
 {{ if .server }}
 .alacritty.yml
+.config/fontconfig/
 .gitconfig
 .ssh/config
+{{ else if eq .chezmoi.os "darwin" }}
+.config/fontconfig/
+.config/yay/
+.ssh/authorized_keys
 {{ else }}
 .ssh/authorized_keys
-{{ end }}
-
-{{ if eq .chezmoi.os "darwin" }}
-.config/yay/
 {{ end }}

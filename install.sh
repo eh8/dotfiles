@@ -55,11 +55,6 @@ elif [ "$(uname)" == "Linux" ]; then
   command -v chezmoi >/dev/null 2>&1 || \
     (echo '👊  Installing chezmoi' && yay -S --noconfirm chezmoi)
 
-  if ! echo $SHELL | grep -q zsh ; then
-    echo "🐚  Changing default shell to zsh"
-    chsh -s /usr/bin/zsh
-  fi
-
   if [ -d "$HOME/.local/share/chezmoi/.git" ]; then
     echo "🚸  chezmoi already initialized"
     echo "    Reinitialize with:"
@@ -68,6 +63,11 @@ elif [ "$(uname)" == "Linux" ]; then
   else
     echo "🚀  Initializing dotfiles"
     chezmoi init eh8 --apply
+  fi
+
+  if ! echo $SHELL | grep -q zsh ; then
+    echo "🐚  Changing default shell to zsh"
+    chsh -s /usr/bin/zsh
   fi
 
   echo ""
