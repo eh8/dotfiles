@@ -68,6 +68,8 @@ elif [ "$(uname)" == "Linux" ]; then
   if ! echo $SHELL | grep -q zsh ; then
     echo "🐚  Changing default shell to zsh"
     chsh -s /usr/bin/zsh
+    touch ~/.zsh_history
+    fc -W
   fi
 
   echo ""

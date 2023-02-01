@@ -13,8 +13,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Configure zsh history
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=1000
+setopt SHARE_HISTORY
+
 # Remove command lines from the history list when the first character on the line is a space
 setopt HIST_IGNORE_SPACE
+
 
 # fzf
 export FZF_DEFAULT_COMMAND='fd'
@@ -156,7 +163,12 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export FZF_BASE=/usr/bin/fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
+# Enable zsh completions
+autoload -Uz compinit
+compinit
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 
 # Tmux window titles
