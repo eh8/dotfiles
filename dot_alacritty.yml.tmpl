@@ -24,7 +24,12 @@ font:
   bold_italic:
     family: Iosevka SS08
     style: Bold Italic
+  {{ if hasPrefix "sg13" .chezmoi.hostname }}
+  size: 12
+  {{ else }}
   size: 15
+  {{ end }}
+
   {{ if eq .chezmoi.os "darwin" }}
   AppleFontSmoothing: true
   {{ end }}
