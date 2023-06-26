@@ -8,7 +8,7 @@ echo "🔧  Configuring macOS settings"
 echo ""
 
 # Check if sudo-touchid already installed
-if ! [[ "$(head -n 1 '/etc/pam.d/sudo')" == *"pam_reattach.so"* ]]; then
+if ! [[ "$(head -n 2 '/etc/pam.d/sudo')" == *"pam_reattach.so"* ]]; then
   sudo brew services restart sudo-touchid
   sudo-touchid
 
