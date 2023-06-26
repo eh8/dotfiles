@@ -8,8 +8,8 @@ echo "🔧  Configuring macOS settings"
 echo ""
 
 # Check if sudo-touchid already installed
-if ! brew services | grep -q sudo-touchid; then
-  sudo brew services start sudo-touchid
+if ! [[ "$(head -n 1 '/etc/pam.d/sudo')" == *"pam_reattach.so"* ]]; then
+  sudo brew services restart sudo-touchid
   sudo-touchid
 
   # Add pam_reattach module to use Touch ID in tmux
