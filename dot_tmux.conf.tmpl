@@ -61,10 +61,7 @@ bind -n S-Right next-window
 # Set default-command to get colors to appear properly, and invoke proper ARM shell
 # inspired by https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
 set-option -g default-command "/usr/bin/arch -arm64 /bin/zsh"
-
-{{ powerline_path = (output "find" "/opt/homebrew/lib" "-name" "powerline.conf" "-print" "-quit") | trim }}
-source {{ powerline_path }}
-
+source {{ (output "find" "/opt/homebrew/lib" "-name" "powerline.conf" "-print" "-quit") | trim }}
 {{ else if eq .chezmoi.os "linux" }}
 source /usr/share/powerline/bindings/tmux/powerline.conf
 {{ end }}
