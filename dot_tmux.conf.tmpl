@@ -62,8 +62,8 @@ bind -n S-Right next-window
 # inspired by https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
 set-option -g default-command "/usr/bin/arch -arm64 /bin/zsh"
 
-# Use the most recent Python version
-source "/opt/homebrew/lib/{{ output "find" "/opt/homebrew/lib" "-name" "powerline.conf" "-quit" | trim }}"
+{{ powerline_path = (output "find" "/opt/homebrew/lib" "-name" "powerline.conf" "-print" "-quit") | trim }}
+source {{ .powerline_path }}
 
 {{ else if eq .chezmoi.os "linux" }}
 source /usr/share/powerline/bindings/tmux/powerline.conf
