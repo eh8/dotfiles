@@ -63,7 +63,7 @@ bind -n S-Right next-window
 set-option -g default-command "/usr/bin/arch -arm64 /bin/zsh"
 
 {{ powerline_path = (output "find" "/opt/homebrew/lib" "-name" "powerline.conf" "-print" "-quit") | trim }}
-source {{ .powerline_path }}
+source {{ powerline_path }}
 
 {{ else if eq .chezmoi.os "linux" }}
 source /usr/share/powerline/bindings/tmux/powerline.conf
