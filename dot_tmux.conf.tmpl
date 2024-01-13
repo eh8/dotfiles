@@ -61,7 +61,11 @@ bind -n S-Right next-window
 # Set default-command to get colors to appear properly, and invoke proper ARM shell
 # inspired by https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
 set-option -g default-command "/usr/bin/arch -arm64 /bin/zsh"
-source /opt/homebrew/lib/python3.11/site-packages/powerline/bindings/tmux/powerline.conf
+
+# Use the most recent Python version
+PYTHON_VERSION=$(ls -1 /opt/homebrew/lib | grep python | sort -r | head -1)
+source "/opt/homebrew/lib/${PYTHON_VERSION}/site-packages/powerline/bindings/tmux/powerline.conf"
+
 {{ else if eq .chezmoi.os "linux" }}
 source /usr/share/powerline/bindings/tmux/powerline.conf
 {{ end }}
