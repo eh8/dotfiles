@@ -63,8 +63,7 @@ bind -n S-Right next-window
 set-option -g default-command "/usr/bin/arch -arm64 /bin/zsh"
 
 # Use the most recent Python version
-PYTHON_VERSION=$(ls -1 /opt/homebrew/lib | grep python | sort -r | head -1)
-source "/opt/homebrew/lib/${PYTHON_VERSION}/site-packages/powerline/bindings/tmux/powerline.conf"
+source "/opt/homebrew/lib/{{ output "find" "/opt/homebrew/lib" "-name" "powerline.conf" "-quit" | trim }}"
 
 {{ else if eq .chezmoi.os "linux" }}
 source /usr/share/powerline/bindings/tmux/powerline.conf

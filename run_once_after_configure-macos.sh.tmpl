@@ -9,6 +9,8 @@ echo ""
 
 # Check if sudo-touchid already installed
 if ! [[ "$(head -n 2 '/etc/pam.d/sudo')" == *"pam_reattach.so"* ]]; then
+  echo "❗  Touch ID not detected, fixing now ..."
+  
   sudo brew services restart sudo-touchid
   sudo-touchid
 
@@ -19,6 +21,10 @@ if ! [[ "$(head -n 2 '/etc/pam.d/sudo')" == *"pam_reattach.so"* ]]; then
   nl=$'\n'
 
   sudo sed -E -i "$backup_ext" "1s/^(#.*)$/\1\\${nl}$touch_pam/" "$sudo_path"
+
+  echo "✅  Done."
+else
+  echo "✅  sudo-touchid already configured. Nothing to do."
 fi
 
 # Enable fzf integration with zsh
