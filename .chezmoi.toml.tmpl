@@ -1,7 +1,7 @@
-{{- $server := false -}}
-{{- if hasPrefix "svr" .chezmoi.hostname -}}
-{{-   $server = true -}}
-{{- end -}}
+{{ $server := false }}
+{{ if hasPrefix "svr" .chezmoi.hostname }}
+{{   $server = true }}
+{{ end }}
 
 [data]
   server = {{ $server }}
