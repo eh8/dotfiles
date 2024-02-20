@@ -157,7 +157,17 @@ compinit
 fpath=(/usr/share/zsh/site-functions/ $fpath)
 {{ end }}
 
+if [[ -z "$ZELLIJ" ]]; then
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach -c
+    else
+        zellij
+    fi
+
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-eval "$(zellij setup --generate-auto-start zsh)"
