@@ -1,7 +1,4 @@
-# https://github.com/romkatv/powerlevel10k/issues/1203
-if [ -z "$TMUX" ]; then
-  exec tmux new-session -A -s 0
-fi
+echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
 
 # Read a nifty quote
 fortune
@@ -170,18 +167,6 @@ source /usr/share/fzf/completion.zsh
 autoload -Uz compinit
 compinit
 fpath=(/usr/share/zsh/site-functions/ $fpath)
-
-# Tmux window titles
-case "$TERM" in
-linux | xterm* | rxvt*)
-  export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}: ${PWD##*/}\007"'
-  ;;
-screen*)
-  export PROMPT_COMMAND='echo -ne "\033k${HOSTNAME%%.*}: ${PWD##*/}\033\\" '
-  ;;
-*) ;;
-esac
-{{ end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
