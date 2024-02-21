@@ -11,10 +11,13 @@ fi
 # Read a nifty quote
 fortune
 
-# fzf
+# Environment variables
 export FZF_DEFAULT_COMMAND='fd'
 export FZF_CTRL_T_OPTS="--preview '(bat --style=plain --theme=base16 --color=always {} || tree -C {}) 2> /dev/null | head -200' --select-1 --exit-0"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+export TEALDEER_CONFIG_DIR=/Users/eh8/.config/tealdeer
+export ZELLIJ_AUTO_ATTACH=true
+export ZELLIJ_AUTO_EXIT=true
 
 # Shortcuts
 alias bat='bat --theme=base16 '
@@ -40,9 +43,6 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Set alternate tealdeer config file location
-export TEALDEER_CONFIG_DIR=/Users/eh8/.config/tealdeer
 
 # Enable zsh completions
 if type brew &>/dev/null; then
