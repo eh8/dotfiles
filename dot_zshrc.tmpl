@@ -5,9 +5,20 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export TEALDEER_CONFIG_DIR=/Users/eh8/.config/tealdeer
 export ZELLIJ_AUTO_ATTACH=true
 export ZELLIJ_AUTO_EXIT=true
+export ZELLIJ_DEFAULT_SESSION_NAME="default"
 
 # https://github.com/zellij-org/zellij/issues/1736
-eval "$(zellij setup --generate-auto-start zsh)"
+if [[ -z "$ZELLIJ" ]]; then
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach $ZELLIJ_DEFAULT_SESSION_NAME
+    else
+        zellij --session $ZELLIJ_DEFAULT_SESSION_NAME
+    fi
+
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
