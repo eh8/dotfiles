@@ -20,15 +20,14 @@ fi
 fortune
 
 # Shortcuts
-alias bat='bat --theme=base16 '
-alias cat='bat --style=plain --theme=base16 --paging=never'
-alias ls='eza '
-alias vim='nvim '
+alias cat='bat --style=plain --theme=base16 --paging=never '
+alias e='eza '
 alias v='nvim '
 alias sudo='sudo '
 alias z='zellij '
 
 {{ if eq .chezmoi.os "darwin" }}
+
 alias bcubc='brew upgrade --cask && brew cleanup'
 alias bcubo='brew update && brew outdated --cask'
 alias brewp='brew pin'
