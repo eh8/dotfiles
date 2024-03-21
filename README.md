@@ -1,5 +1,8 @@
 # eh8's dotfiles
 
+> [!NOTE]
+> *March 21, 2024*: I currently manage my [dotfiles using NixOS](https://github.com/eh8/chenglab). While I don't plan on actively maintaining this repository anymore, feel free to reach out if you encounter issues with my configuration.
+
 These are my dotfiles, which use [chezmoi](https://www.chezmoi.io/). I was inspired by [chimurai's dotfiles](https://github.com/chimurai/dotfiles).
 
 To rapidly provision a macOS or Arch Linux machine:
